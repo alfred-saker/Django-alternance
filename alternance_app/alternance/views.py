@@ -8,10 +8,9 @@ from alternance.models import Offre, User
 
 
 def home_view(request):
-  user_id = request.user.id
   username = request.user.username
-  datas = Offre.objects.filter(user_id=user_id)
-  return render(request, 'home.html',{'datas':datas, 'user_id':user_id,'username':username})
+  datas = Offre.objects.all()
+  return render(request, 'home.html',{'datas':datas,'username':username})
 
 def register_view(request):
     if request.method == 'POST':

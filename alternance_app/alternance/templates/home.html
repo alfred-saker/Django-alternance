@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-Bienvenu {{username}}
-<a href="{% url 'logout' %}">Je le deconnecte</a>{{user.id}}
+Bienvenu {{username}} <br>
+<a href="{% url 'logout' %}">Je me deconnecte</a>
   <table class="table">
     <thead>
       <tr>
@@ -15,19 +15,19 @@ Bienvenu {{username}}
       </tr>
     </thead>
     <tbody>
-      {% comment %} {% for datas in data %} {% endcomment %}
+      {% for data in datas %} 
       <tr>
         {% comment %} <th scope="row">1</th> {% endcomment %}
-        <td>{{ datas.entreprise }}</td>
-        <td>{{ datas.poste }}</td>
-        <td>{{ datas.contrat }}</td>
-        <td>{{ datas.localisation }}</td>
+        <td>{{ data.entreprise }}</td>
+        <td>{{ data.poste }}</td>
+        <td>{{ data.choix_contrat }}</td>
+        <td>{{ data.localisation }}</td>
         <td>
           <a href="#">Editer</a>
           <a href="#">Supprimer</a>
         </td>
       </tr>
-      {% comment %} {% endfor %} {% endcomment %}
+      {% endfor %} 
     </tbody>
   </table>
 
