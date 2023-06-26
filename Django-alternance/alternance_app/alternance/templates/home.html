@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+Bienvenu {{username}}
+<a href="{% url 'logout' %}">Je le deconnecte</a>{{user.id}}
+  <table class="table">
+    <thead>
+      <tr>
+        {% comment %} <th scope="col">#</th> {% endcomment %}
+        <th scope="col">Entreprise</th>
+        <th scope="col">Poste</th>
+        <th scope="col">Contrat</th>
+        <th scope="col">Localisation</th>
+        <th scope="col">Actions</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% comment %} {% for datas in data %} {% endcomment %}
+      <tr>
+        {% comment %} <th scope="row">1</th> {% endcomment %}
+        <td>{{ datas.entreprise }}</td>
+        <td>{{ datas.poste }}</td>
+        <td>{{ datas.contrat }}</td>
+        <td>{{ datas.localisation }}</td>
+        <td>
+          <a href="#">Editer</a>
+          <a href="#">Supprimer</a>
+        </td>
+      </tr>
+      {% comment %} {% endfor %} {% endcomment %}
+    </tbody>
+  </table>
+
+{% endblock %}

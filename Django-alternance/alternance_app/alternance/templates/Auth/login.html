@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Connexion</h2>    
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}" >{{ form.username.label }}</label>
+          {{ form.username }}
+          {% if form.username.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}" >{{ form.password.label }}</label>
+          {{ form.password }}
+          {% if form.password.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div> <br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Je me connecte</button>       
+        </div>
+    </form>
+    <div>
+    <small>
+        Je n'ai pas de compte
+        <a href="{% url 'register' %}">S'inscrire</a>
+    </small>
+  </div>
+{% endblock %}

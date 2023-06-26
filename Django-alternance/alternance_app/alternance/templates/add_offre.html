@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Créer une offre de votre choix</h2>    
+    <form method="post" action="{% url 'add' %}">
+        {% csrf_token %}
+        <input type="hidden" value="{{user.id}}" name="user">
+        <div class="form-group">
+          <label for="{{ form.poste.id_for_label }}" >{{ form.poste.label }}</label>
+          {{ form.poste }}
+          {% if form.poste.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.poste.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.entreprise.id_for_label }}" >{{ form.entreprise.label }}</label>
+          {{ form.entreprise }}
+          {% if form.entreprise.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.entreprise.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.localisation.id_for_label }}" >{{ form.localisation.label }}</label>
+          {{ form.localisation }}
+          {% if form.localisation.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.localisation.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.choix_contrat.id_for_label }}" >{{ form.choix_contrat.label }}</label>
+          {{ form.choix_contrat }}
+          {% if form.choix_contrat.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.choix_contrat.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.details.id_for_label }}" >{{ form.details.label }}</label>
+          {{ form.details }}
+          {% if form.details.errors %}
+            <div class="invalid-feedback">
+              {% for error in form.details.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>       
+        </div>
+    </form>
+    <div>
+  </div>
+{% endblock %}
